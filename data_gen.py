@@ -5,8 +5,8 @@ import random
 
 # small scale input and large scale input generation options
 parser = argparse.ArgumentParser(description='number of small and large scale inputs.')
-parser.add_argument('--small', metavar='SMALL', type=int, default=50, help='an integer for the accumulator')
-parser.add_argument('--large', metavar='LARGE', type=int, default=50, help='an integer for the accumulator')
+parser.add_argument('--small', metavar='SMALL', type=int, default=50, help='number of small scale inputs')
+parser.add_argument('--large', metavar='LARGE', type=int, default=50, help='number of large scale inputs')
 args = parser.parse_args()
 
 ################ small scale generation ######################
