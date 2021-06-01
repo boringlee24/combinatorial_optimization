@@ -3,54 +3,68 @@ import numpy as np
 import argparse
 import random
 
-# small scale input and large scale input generation options
-parser = argparse.ArgumentParser(description='number of small and large scale inputs.')
-parser.add_argument('--small', metavar='SMALL', type=int, default=50, help='number of small scale inputs')
-parser.add_argument('--large', metavar='LARGE', type=int, default=50, help='number of large scale inputs')
-args = parser.parse_args()
-
-################ small scale generation ######################
-
-item_n = [25, 50, 100, 200, 500]
-weight_max = 100
-bin_sizes = [100, 120, 150]
-# bin_number will be Gaussian distributed with mean of item_n / (bin_size / (weight_max/2)) and var of 20% mean
+def gen(lower, upper, cap_co, input_f):
+    for n in range(5, 101, 5):
+        cap = int(n * cap_co)
+        wline = f'{cap}'
+        weights = np.random.randint(lower, upper, size=n)
+        for w in weights:
+            wline += f',{w}'
+        wline += '\n'
+        input_f.writelines(wline)
 
 input_f = open('input.txt', 'w')
 
-num_small = args.small
-for i in range(num_small):
-    bin_size = random.choice(bin_sizes)
-    item_num = random.choice(item_n)
-    bin_num_mean = item_num / (bin_size / (weight_max / 2))
-    bin_num_std = bin_num_mean * 0.2
-    bin_num = int(np.random.normal(bin_num_mean, bin_num_std))
-    item_size = np.random.uniform(1, weight_max, item_num).astype(int)
-    w_line = f'{bin_size},{bin_num}'
-    for val in item_size:
-        w_line += f',{val}'
-    w_line += ' \n'
-    input_f.writelines(w_line)
+################ P3 ######################
 
-################# large scale generation ########################
+lower = 1
+upper = 1e3
+cap_co = 1e3 / 4
+gen(lower, upper, cap_co, input_f)
 
-item_n = [100, 200, 500, 1000, 2000]
-weight_max = 250
-bin_sizes = [70, 100, 130, 160, 190, 220, 250]
+############### P6 ####################
 
-num_large = args.large
-for i in range(num_large):
-    bin_size = random.choice(bin_sizes)
-    item_num = random.choice(item_n)
-    bin_num_mean = item_num / (bin_size / (weight_max / 2))
-    bin_num_std = bin_num_mean * 0.2
-    bin_num = int(np.random.normal(bin_num_mean, bin_num_std))
-    item_size = np.random.uniform(1, weight_max, item_num).astype(int)
-    w_line = f'{bin_size},{bin_num}'
-    for val in item_size:
-        w_line += f',{val}'
-    w_line += ' \n'
-    input_f.writelines(w_line)
+lower = 1
+upper = 1e6
+cap_co = 1e6 / 4
+gen(lower, upper, cap_co, input_f)
+
+############### EVEN/ODD ####################
+
+lower = 1
+upper = 1e3
+
+for n in range(5, 101, 5):
+    cap = int(n * 1e3 / 4 + 1)
+    wline = f'{cap}'
+    weights = np.random.randint(lower, upper, size=n)
+    for w in weights:
+        wline += f',{w}'
+    wline += '\n'
+    input_f.writelines(wline)
+
+############### AVIS ####################
+
+for n in range(5, 101, 5):
+    cap = int(n * (n+1) * (n-1) / 2 + n * (n-1) / 2)
+    wline = f'{cap}'
+    weights = [n * (n+1) + j for j in range(n)] 
+    for w in weights:
+        wline += f',{w}'
+    wline += '\n'
+    input_f.writelines(wline)
+
+############### TODD ####################
+
+for n in range(5, 26, 1):
+    weights = [n * (2**(n+1)) + n * (2**j) + 1 for j in range(n)] 
+    cap = int(sum(weights) / 2)
+    wline = f'{cap}'
+    for w in weights:
+        wline += f',{w}'
+    wline += '\n'
+    input_f.writelines(wline)
 
 input_f.close()
+
 
