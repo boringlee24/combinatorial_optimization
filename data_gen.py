@@ -56,7 +56,7 @@ for n in range(5, 101, 5):
 
 ############### TODD ####################
 
-for n in range(5, 26, 1):
+for n in range(5, 25, 1):
     weights = [n * (2**(n+1)) + n * (2**j) + 1 for j in range(n)] 
     cap = int(sum(weights) / 2)
     wline = f'{cap}'
