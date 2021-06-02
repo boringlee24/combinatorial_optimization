@@ -19,7 +19,7 @@ def greedy(x_list, target):
             break
     return optimal 
 
-def inner_loop(line):
+def inner_loop(line, index):
 #    pdb.set_trace()
     split = line.split(',')
     target = int(split.pop(0))
@@ -27,6 +27,7 @@ def inner_loop(line):
     x_list = [int(i) for i in split]
 
     gd = greedy(x_list, target)
+    print(f'finished line {index}')
     return (gd, len(x_list))
 
 def main():
@@ -42,7 +43,7 @@ def main():
     input_f.close()
 
     usable_cores = os.sched_getaffinity(0)
-    gd_opt = Parallel(n_jobs=len(usable_cores))(delayed(inner_loop)(line) for line in rline)
+    gd_opt = Parallel(n_jobs=len(usable_cores))(delayed(inner_loop)(line, rline.index(line)) for line in rline)
     with open(f'data/greedy.json', 'w') as f:
         json.dump(gd_opt, f, indent=4)
 

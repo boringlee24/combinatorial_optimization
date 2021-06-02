@@ -4,7 +4,7 @@ import argparse
 import random
 
 def gen(lower, upper, cap_co, input_f):
-    for n in range(5, 101, 5):
+    for n in range(2, 51, 2):
         cap = int(n * cap_co)
         wline = f'{cap}'
         weights = np.random.randint(lower, upper, size=n)
@@ -34,7 +34,7 @@ gen(lower, upper, cap_co, input_f)
 lower = 1
 upper = 1e3
 
-for n in range(5, 101, 5):
+for n in range(2, 51, 2):
     cap = int(n * 1e3 / 4 + 1)
     wline = f'{cap}'
     weights = np.random.randint(lower, upper, size=n)
@@ -45,7 +45,7 @@ for n in range(5, 101, 5):
 
 ############### AVIS ####################
 
-for n in range(5, 101, 5):
+for n in range(2, 51, 2):
     cap = int(n * (n+1) * (n-1) / 2 + n * (n-1) / 2)
     wline = f'{cap}'
     weights = [n * (n+1) + j for j in range(n)] 
@@ -56,14 +56,14 @@ for n in range(5, 101, 5):
 
 ############### TODD ####################
 
-for n in range(5, 25, 1):
-    weights = [n * (2**(n+1)) + n * (2**j) + 1 for j in range(n)] 
-    cap = int(sum(weights) / 2)
-    wline = f'{cap}'
-    for w in weights:
-        wline += f',{w}'
-    wline += '\n'
-    input_f.writelines(wline)
+#for n in range(2, 51, 2):
+#    weights = [n * (2**(n+1)) + n * (2**j) + 1 for j in range(n)] 
+#    cap = int(sum(weights) / 2)
+#    wline = f'{cap}'
+#    for w in weights:
+#        wline += f',{w}'
+#    wline += '\n'
+#    input_f.writelines(wline)
 
 input_f.close()
 
