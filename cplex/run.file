@@ -1,0 +1,7 @@
+reset;
+option solver cplex;
+option cplex_options 'timelimit=1';
+model proj.mod;
+data proj.dat;
+solve;
+display objective;

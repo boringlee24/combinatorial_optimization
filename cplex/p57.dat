@@ -1,0 +1,20 @@
+data;
+set WEIGHTS := x0 x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 x11 x12 x13 x14 x15;
+param:  cost :=
+  x0  546
+  x1  138
+  x2  291
+  x3  886
+  x4  637
+  x5  563
+  x6  223
+  x7  348
+  x8  798
+  x9  418
+  x10  399
+  x11  322
+  x12  631
+  x13  737
+  x14  262
+  x15  45;
+param cap := 4001;
