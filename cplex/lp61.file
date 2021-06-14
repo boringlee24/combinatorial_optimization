@@ -1,0 +1,7 @@
+reset;
+option solver cplex;
+option cplex_options 'timelimit=600';
+model proj_lp.mod;
+p61.dat;
+solve;
+display objective;

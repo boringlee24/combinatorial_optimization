@@ -29,4 +29,24 @@ for index,line in enumerate(rline):
                 f.write(f'  {var}  {weight.strip()}\n')
         f.write(f'param cap := {cap};')
 
+    with open(f'cplex/lp{index}.file', 'w') as f:
+        f.write(f'reset;\n')
+        f.write(f'option solver cplex;\n')
+        f.write(f'option cplex_options \'timelimit=600\';\n')
+        f.write(f'model proj_lp.mod;\n')
+        f.write(f'p{index}.dat;\n')
+        f.write(f'solve;\n')
+        f.write(f'display objective;')
+
+    with open(f'cplex/ilp{index}.file', 'w') as f:
+        f.write(f'reset;\n')
+        f.write(f'option solver cplex;\n')
+        f.write(f'option cplex_options \'timelimit=600\';\n')
+        f.write(f'model proj_ilp.mod;\n')
+        f.write(f'p{index}.dat;\n')
+        f.write(f'solve;\n')
+        f.write(f'display objective;')
+
+
+
 
