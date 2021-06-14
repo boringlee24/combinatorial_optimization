@@ -1,0 +1,5 @@
+CPLEX 20.1.0.0: timelimit=600
+CPLEX 20.1.0.0: optimal solution; objective 6000
+0 dual simplex iterations (0 in phase I)
+objective = 6000
+

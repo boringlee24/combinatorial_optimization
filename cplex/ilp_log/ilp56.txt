@@ -1,0 +1,6 @@
+CPLEX 20.1.0.0: timelimit=600
+CPLEX 20.1.0.0: optimal integer solution; objective 3501
+658 MIP simplex iterations
+789 branch-and-bound nodes
+objective = 3501
+

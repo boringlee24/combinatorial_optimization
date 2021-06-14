@@ -1,0 +1,7 @@
+CPLEX 20.1.0.0: timelimit=600
+CPLEX 20.1.0.0: optimal integer solution within mipgap or absmipgap; objective 8999766
+127 MIP simplex iterations
+78 branch-and-bound nodes
+absmipgap = 234, relmipgap = 2.60007e-05
+objective = 8999770
+

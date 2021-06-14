@@ -1,0 +1,4 @@
+Solution determined by presolve;
+objective objective = 0.
+objective = 0
+
