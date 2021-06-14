@@ -31,13 +31,6 @@ def inner_loop(line, index):
     return (gd, len(x_list))
 
 def main():
-    x_list = []
-    for i in range(0,5):                        
-        num = random.randint(0,100)               
-        x_list.append(num) 
-
-    target = random.randint(0,100) 
-
     input_f = open('input.txt', 'r')
     rline = input_f.readlines()
     input_f.close()
