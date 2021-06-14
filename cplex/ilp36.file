@@ -2,6 +2,6 @@ reset;
 option solver cplex;
 option cplex_options 'timelimit=600';
 model proj_ilp.mod;
-p36.dat;
+data p36.dat;
 solve;
 display objective;

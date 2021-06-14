@@ -34,7 +34,7 @@ for index,line in enumerate(rline):
         f.write(f'option solver cplex;\n')
         f.write(f'option cplex_options \'timelimit=600\';\n')
         f.write(f'model proj_lp.mod;\n')
-        f.write(f'p{index}.dat;\n')
+        f.write(f'data p{index}.dat;\n')
         f.write(f'solve;\n')
         f.write(f'display objective;')
 
@@ -43,7 +43,7 @@ for index,line in enumerate(rline):
         f.write(f'option solver cplex;\n')
         f.write(f'option cplex_options \'timelimit=600\';\n')
         f.write(f'model proj_ilp.mod;\n')
-        f.write(f'p{index}.dat;\n')
+        f.write(f'data p{index}.dat;\n')
         f.write(f'solve;\n')
         f.write(f'display objective;')
 
